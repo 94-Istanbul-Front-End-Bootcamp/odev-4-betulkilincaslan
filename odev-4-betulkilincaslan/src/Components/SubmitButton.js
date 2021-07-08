@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 
 export default function SubmitButton(props) {
   const { onClickHandler } = props;
+
   return (
     <div>
       <Button
@@ -11,7 +12,7 @@ export default function SubmitButton(props) {
         color="info"
         className="w-100"
       >
-        Add Comment
+        Add New Comment
       </Button>
     </div>
   );

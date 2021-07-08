@@ -3,7 +3,7 @@ import { Table } from "reactstrap";
 import Comment from "./Comment";
 
 export default function ListComment(props) {
-  const { comments } = props;
+  const { comments, deleteComment } = props;
 
   return (
     <div>
@@ -15,12 +15,21 @@ export default function ListComment(props) {
             <tr>
               <th>Comment</th>
               <th>Vote</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {comments.map((comment) => {
               const { id, text, vote } = comment;
-              return <Comment key={id} text={text} vote={vote} />;
+              return (
+                <Comment
+                  key={id}
+                  id={id}
+                  text={text}
+                  vote={vote}
+                  deleteComment={deleteComment}
+                />
+              );
             })}
           </tbody>
         </Table>

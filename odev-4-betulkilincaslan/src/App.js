@@ -24,9 +24,7 @@ export default class App extends Component {
 
   onClickHandler = () => {
     const newState = this.state;
-    console.log(!this.state.vote === 0 && this.state.commentValue.length > 3);
     if (this.state.vote !== 0 && this.state.commentValue.length > 3) {
-      console.log("if e girdi");
       newState.comments.push({
         id: Math.random(),
         text: this.state.commentValue,
@@ -38,8 +36,6 @@ export default class App extends Component {
       this.setState({
         ...newState,
       });
-
-      console.log(this.state);
     } else {
       if (this.state.vote === 0 && this.state.commentValue.length <= 3) {
         alert(" Oy verin ve 3 karakterden fazla yorum yapın ");
@@ -54,6 +50,12 @@ export default class App extends Component {
     }
   };
 
+  deleteComment = (id) => {
+    let updatedComments = this.state.comments;
+    updatedComments = updatedComments.filter((comment) => comment.id !== id);
+    this.setState({ comments: updatedComments });
+  };
+
   render() {
     return (
       <div>
@@ -62,8 +64,7 @@ export default class App extends Component {
             <Col sm="12" md={{ size: 6, offset: 3 }}>
               <ListComment
                 comments={this.state.comments}
-                commentValue={this.state.commentValue}
-                vote={this.state.vote}
+                deleteComment={this.deleteComment}
               />
               <AddComment
                 commentValue={this.state.commentValue}
