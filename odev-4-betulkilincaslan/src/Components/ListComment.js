@@ -10,12 +10,12 @@ export default function ListComment(props) {
       <h3 className="fs-3 fw-bold">Comments</h3>
       <hr />
       {comments.length > 0 ? (
-        <Table>
+        <Table responsive>
           <thead>
             <tr>
               <th>Comment</th>
               <th>Vote</th>
-              <th>Delete</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

@@ -6,6 +6,7 @@ import AddVote from "./Components/AddVote";
 import AddComment from "./Components/AddComment";
 import ListComment from "../src/Components/ListComment";
 import "./App.css";
+import alertify from "alertifyjs";
 
 export default class App extends Component {
   state = {
@@ -13,15 +14,15 @@ export default class App extends Component {
     commentValue: "",
     vote: 0,
   };
-
+  //Adding comment
   onCommentChange = (event) => {
     this.setState({ commentValue: event.target.value });
   };
-
+  //Adding vote
   onVoteChange = (newRating) => {
     this.setState({ vote: newRating });
   };
-
+  //Submitting comment
   onClickHandler = () => {
     const newState = this.state;
     if (this.state.vote !== 0 && this.state.commentValue.length > 3) {
@@ -38,18 +39,18 @@ export default class App extends Component {
       });
     } else {
       if (this.state.vote === 0 && this.state.commentValue.length <= 3) {
-        alert(" Oy verin ve 3 karakterden fazla yorum yapın ");
+        alertify.error(" Please vote and comment more than 3 characters. ", 4);
       } else {
         if (this.state.vote === 0) {
-          alert("Oy verin");
+          alertify.error("Please vote.", 3);
         }
         if (this.state.commentValue.length <= 3) {
-          alert("3 karakterden fazla yorum please");
+          alertify.error("Please comment more than 3 characters.", 4);
         }
       }
     }
   };
-
+  //Delete comment
   deleteComment = (id) => {
     let updatedComments = this.state.comments;
     updatedComments = updatedComments.filter((comment) => comment.id !== id);
