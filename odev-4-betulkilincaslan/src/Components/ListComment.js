@@ -34,7 +34,7 @@ export default function ListComment(props) {
           </tbody>
         </Table>
       ) : (
-        <h3>No comments yet.</h3>
+        <h4>No comment yet.</h4>
       )}
     </div>
   );
