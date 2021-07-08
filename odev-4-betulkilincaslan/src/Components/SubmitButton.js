@@ -10,7 +10,7 @@ export default function SubmitButton(props) {
         onClick={onClickHandler}
         type="submit"
         color="info"
-        className="w-100"
+        className="w-100 mb-5"
       >
         Add New Comment
       </Button>
