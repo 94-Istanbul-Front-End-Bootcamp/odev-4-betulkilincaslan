@@ -58,23 +58,21 @@ export default class App extends Component {
   };
 
   render() {
+    const { comments, commentValue, vote } = this.state;
     return (
       <div>
         <Container className="mt-4">
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
               <ListComment
-                comments={this.state.comments}
+                comments={comments}
                 deleteComment={this.deleteComment}
               />
               <AddComment
-                commentValue={this.state.commentValue}
+                commentValue={commentValue}
                 onCommentChange={this.onCommentChange}
               />
-              <AddVote
-                onVoteChange={this.onVoteChange}
-                vote={this.state.vote}
-              />
+              <AddVote onVoteChange={this.onVoteChange} vote={vote} />
               <SubmitButton onClickHandler={this.onClickHandler} />
             </Col>
           </Row>
